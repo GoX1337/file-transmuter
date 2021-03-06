@@ -18,7 +18,7 @@ public class FileUploadService {
     @Autowired
     private CsvFileParser csvFileParser;
 
-    public boolean saveFileObject(String name, MultipartFile file){
+    public List<FileObject> saveFileObject(String name, MultipartFile file){
         List<FileObject> fileObjects = null;
 
         if(name.endsWith(".csv")){
@@ -27,8 +27,7 @@ public class FileUploadService {
 
         if(fileObjects != null) {
             cacheService.save(name, fileObjects);
-            return true;
         }
-        return false;
+        return fileObjects;
     }
 }

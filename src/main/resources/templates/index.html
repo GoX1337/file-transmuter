@@ -1,4 +1,15 @@
+<!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<style>
+		body {
+			font-family: sans-serif;
+		}
+		.results {
+			font-size: 0.7em
+		}
+	</style>
+</head>
 <body>
 	<div th:if="${message}">
 		<h2 th:text="${message}"/>
@@ -16,13 +27,17 @@
 			</table>
 		</form>
 	</div>
-	<div>
-		<ul>
-			<li th:each="file : ${files}">
-				<a th:href="${file}" th:text="${file}" />
-			</li>
-		</ul>
-	</div>
+
+	<table id="results">
+		<thead>
+			<tr><th th:each="key : ${keys}" th:text="${key}"></th></tr>
+		</thead>
+		<tbody>
+			<tr th:each="line : ${fileObjects}" >
+				<td th:each="value : ${line.values()}" th:text="${value}"></td>
+			</tr>
+		</tbody>
+	</table>
 
 </body>
 </html>
