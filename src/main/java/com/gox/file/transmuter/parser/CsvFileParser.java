@@ -16,7 +16,7 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class CsvFileParser {
+public class CsvFileParser implements FileParser {
 
     public List<FileObject> parse(MultipartFile file){
         List<FileObject> csvFile = new ArrayList<>();

@@ -29,7 +29,7 @@ public class FileImportController {
         List<FileObject> fileObjects = fileUploadService.saveFileObject(filename, file);
         String msg = fileObjects != null ? "You successfully uploaded " + filename + "!" : "File type not supported";
         redirectAttributes.addFlashAttribute("message", msg);
-        redirectAttributes.addFlashAttribute("keys", fileObjects.get(0).keySet());
+        redirectAttributes.addFlashAttribute("keys", fileObjects != null && !fileObjects.isEmpty() ? fileObjects.get(0).keySet() : null);
         redirectAttributes.addFlashAttribute("fileObjects", fileObjects);
         return "redirect:/";
     }
